@@ -11,7 +11,7 @@ alias htop="sudo htop"
 alias ..="cd .."
 alias ntron="ssh stephan@46.101.159.141"
 alias ls="ls -Gp"
-alias lsa="ls -La"
+alias lsa="ls -AF"
 alias ml_trading="source ~/Desktop/ml_trading/env/ml_trading/bin/activate"
  
 # colored ls output
