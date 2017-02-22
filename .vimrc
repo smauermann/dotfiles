@@ -1,9 +1,26 @@
 """""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible         " be iMproved, required
+filetype off             " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" my plugins
+Plugin 'Valloric/YouCompleteMe'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+
+"""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""
 set history=500         " how many lines of history to remember
-filetype plugin on
-filetype indent on      " load filetype specific indentation files
 set autoread            " autoread when file is changes elsewhere
 let mapleader = ","     " leader key gives extra key combinations
 let g:mapleader=","
@@ -152,6 +169,3 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """""""""""""""""""""""""""""""""""""""""""""
 " always show status line
 set statusline=2
-
-" format status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
