@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'heavenshell/vim-pydocstring'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -23,8 +25,9 @@ filetype plugin indent on    " required
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
 
@@ -75,6 +78,7 @@ set cursorline          " highlight current line
 set ruler               " show current position
 set wildmenu            " visual autocomplete for command menu
 set foldcolumn=1        " bit extra margin to the left
+set transparency=15
 
 """""""""""""""""""""""""""""""""""""""""""""
 " ignore compiled files
@@ -154,11 +158,6 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext
 
-" let 'tl' toggle between current and last tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
 " open tab with current buffers path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
@@ -182,18 +181,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set statusline=2
 
 """""""""""""""""""""""""""""""""""""""""""""
-" Filetype specifics
+" Key mappings
 """""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+" remap 0 to first non-blank char
+map 0 ^

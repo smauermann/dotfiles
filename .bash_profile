@@ -13,9 +13,17 @@ alias ntron="ssh stephan@46.101.159.141"
 alias ls="ls -Gp"
 alias lsa="ls -AF"
 
-# manipulating .bash_profile
-alias vb="vim ~/.bash_profile"
-alias sb="source ~/.bash_profile"
+# git aliases
+alias gs="git status"
+alias ga="git add"
+
+# use macvim instead of sys vim
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+
+# manipulating .bash_profile, .vimrc, ...
+alias vbash="vim ~/.bash_profile"
+alias sbash="source ~/.bash_profile"
+alias vvim="vim ~/.vimrc"
 
 # python env aliases
 alias ml_trading="source ~/Desktop/ml_trading/env/ml_trading/bin/activate"
@@ -25,7 +33,7 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # for autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # add all known keys to ssh-agent, thats somehow fucked up in macOS Sierra
 ssh-add -A 2>/dev/null;
