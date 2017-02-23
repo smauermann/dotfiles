@@ -16,6 +16,7 @@ alias lsa="ls -AF"
 # git aliases
 alias gs="git status"
 alias ga="git add"
+alias gpom="git push origin master"
 
 # use macvim instead of sys vim
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
