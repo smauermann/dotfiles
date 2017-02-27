@@ -54,7 +54,6 @@ set background=dark     " switch between solarized dark/light
 set gfn=Source\ Code\ Pro:h14
 set encoding=utf8       " utf8 encoding
 set ffs=unix,dos,mac    " unix as standard file type
-
 """""""""""""""""""""""""""""""""""""""""""""
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""
@@ -78,7 +77,6 @@ set cursorline          " highlight current line
 set ruler               " show current position
 set wildmenu            " visual autocomplete for command menu
 set foldcolumn=1        " bit extra margin to the left
-set transparency=15
 
 """""""""""""""""""""""""""""""""""""""""""""
 " ignore compiled files
