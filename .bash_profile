@@ -28,7 +28,6 @@ alias sbash="source ~/.bash_profile"
 alias vvim="vim ~/.vimrc"
 
 # python env aliases
-alias ml_trading="source ~/Desktop/ml_trading/env/ml_trading/bin/activate"
  
 # colored ls output
 export CLICOLOR=1

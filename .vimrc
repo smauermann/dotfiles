@@ -129,9 +129,9 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""
 "moving around
 """""""""""""""""""""""""""""""""""""""""""""
+" search forward via space
 map <space> /
-map <c-space> ?
-" disable highlight with ",ctrl"
+" disable highlight with ",enter"
 map <silent> <leader><cr> :noh<cr>
 " move between windows
 map <C-j> <C-W>j
