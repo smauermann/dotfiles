@@ -13,6 +13,7 @@ alias ntron="ssh stephan@46.101.159.141"
 alias ls="ls -Gp"
 alias lsa="ls -AF"
 alias pr="echo $?"
+alias flush="sudo route flush"
 
 # git aliases
 alias gs="git status"
