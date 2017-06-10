@@ -16,6 +16,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'heavenshell/vim-pydocstring'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -30,16 +32,17 @@ let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 let g:ycm_autoclose_preview_window_after_completion=1
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
-
+" airline themes
+let g:airline_theme='solarized'
 """""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2        " enable a status bar
 set history=500         " how many lines of history to remember
 set autoread            " autoread when file is changes elsewhere
 let mapleader = ","     " leader key gives extra key combinations
 let g:mapleader=","
-" fast saving by ,w
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<cr>  " fast saving by ,w
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Colors and Font
@@ -183,3 +186,4 @@ set statusline=2
 """""""""""""""""""""""""""""""""""""""""""""
 " remap 0 to first non-blank char
 map 0 ^
+autocmd FileType python nnoremap <buffer> <F9> :exec 'w !python' shellescape(@%, 1)<cr>
