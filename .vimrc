@@ -34,15 +34,15 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:SimpylFold_docstring_preview=1
 " airline themes
 let g:airline_theme='solarized'
+
 """""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2        " enable a status bar
 set history=500         " how many lines of history to remember
 set autoread            " autoread when file is changes elsewhere
-let mapleader = ","     " leader key gives extra key combinations
 let g:mapleader=","
-nmap <leader>w :w!<cr>  " fast saving by ,w
+" fast saving by ,w
+noremap <leader>w :update<cr>  
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Colors and Font
@@ -57,6 +57,7 @@ set background=dark     " switch between solarized dark/light
 set gfn=Source\ Code\ Pro:h14
 set encoding=utf8       " utf8 encoding
 set ffs=unix,dos,mac    " unix as standard file type
+
 """""""""""""""""""""""""""""""""""""""""""""
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""
@@ -180,10 +181,10 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """""""""""""""""""""""""""""""""""""""""""""
 " always show status line
 set statusline=2
+set laststatus=2        " enable a status bar
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
 """""""""""""""""""""""""""""""""""""""""""""
 " remap 0 to first non-blank char
 map 0 ^
-autocmd FileType python nnoremap <buffer> <F9> :exec 'w !python' shellescape(@%, 1)<cr>
