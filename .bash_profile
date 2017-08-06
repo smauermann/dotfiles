@@ -29,7 +29,7 @@ alias sbash="source ~/.bash_profile"
 alias vvim="vim ~/.vimrc"
 
 # python env aliases
- 
+alias py_trade="source /Users/Stephan/Desktop/py_trade/py_trade/bin/activate" 
 # colored ls output
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx

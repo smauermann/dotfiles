@@ -28,7 +28,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python3'
-let g:ycm_server_python_interpreter = '/usr/local/bin/python'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
