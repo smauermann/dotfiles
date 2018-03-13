@@ -11,7 +11,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " my plugins
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Raimondi/delimitMate'
@@ -26,10 +25,6 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe
-let g:ycm_python_binary_path = 'python3'
-let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
 " airline themes
@@ -71,6 +66,9 @@ set ai                  " autoindent
 set si                  " smartindent
 set wrap                " wrap lines
 
+" smaller tabs for html and css
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype css setlocal ts=2 sw=2 expandtab
 """""""""""""""""""""""""""""""""""""""""""""
 " UI Config
 """""""""""""""""""""""""""""""""""""""""""""

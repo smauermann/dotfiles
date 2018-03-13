@@ -9,7 +9,6 @@ export LANG=en_US.UTF-8
 # general aliases
 alias htop="sudo htop"
 alias ..="cd .."
-alias ntron="ssh stephan@46.101.159.141"
 alias ls="ls -Gp"
 alias lsa="ls -AF"
 alias pr="echo $?"
@@ -29,7 +28,7 @@ alias sbash="source ~/.bash_profile"
 alias vvim="vim ~/.vimrc"
 
 # python env aliases
-alias py_trade="source /Users/Stephan/Desktop/py_trade/py_trade/bin/activate" 
+alias py_data="source /Users/Stephan/Desktop/data_science/data_science/bin/activate" 
 # colored ls output
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
