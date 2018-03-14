@@ -3,7 +3,7 @@
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH
 
-exportLC_ALL=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # general aliases
@@ -28,7 +28,7 @@ alias sbash="source ~/.bash_profile"
 alias vvim="vim ~/.vimrc"
 
 # python env aliases
-alias py_data="source /Users/Stephan/Desktop/data_science/data_science/bin/activate" 
+alias py_data="source /Users/Stephan/projects/python_envs/data_science/bin/activate" 
 # colored ls output
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -36,7 +36,16 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # for autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-# add all known keys to ssh-agent, thats somehow fucked up in macOS Sierra
-ssh-add -A 2>/dev/null;
+# pip bash completion start
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
+# pip bash completion end
 
 . ~/.bash_prompt
+
+
