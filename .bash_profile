@@ -1,5 +1,3 @@
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH
 
@@ -11,13 +9,12 @@ alias htop="sudo htop"
 alias ..="cd .."
 alias ls="ls -Gp"
 alias lsa="ls -AF"
-alias pr="echo $?"
-alias flush="sudo route flush"
+
+# brew update
+alias brew_update="brew update; brew upgrade; brew cleanup; brew doctor"
 
 # git aliases
-alias gs="git status"
-alias ga="git add"
-alias gpom="git push origin master"
+alias g="git"
 
 # use macvim instead of sys vim
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
@@ -28,12 +25,18 @@ alias sbash="source ~/.bash_profile"
 alias vvim="vim ~/.vimrc"
 
 # python env aliases
-alias py_data="source /Users/Stephan/projects/python_envs/data_science/bin/activate" 
+function pyenv() {
+    if [ $VIRTUAL_ENV ]; then
+        deactivate
+    fi
+    source /Users/Stephan/projects/python_envs/$1/bin/activate
+}
+
 # colored ls output
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-# for autojump
+# Autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # pip bash completion start
@@ -44,8 +47,10 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-# pip bash completion end
+
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 
 . ~/.bash_prompt
-
-

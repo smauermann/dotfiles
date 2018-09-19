@@ -11,12 +11,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " my plugins
+Plugin 'morhetz/gruvbox'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ervandew/supertab'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -27,24 +28,22 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
-" airline themes
-let g:airline_theme='solarized'
-
+" Airline tab line
+let g:airline#extensions#tabline#enabled = 1
 """""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""
+set clipboard=unnamed   " use macOS clipboard
 set history=500         " how many lines of history to remember
-set autoread            " autoread when file is changes elsewhere
+set autoread            " autoread when file is changed elsewhere
 let g:mapleader=","
-" fast saving by ,w
-noremap <leader>w :update<cr>  
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Colors and Font
 """""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 try
-    colorscheme solarized
+    colorscheme gruvbox
 catch
 endtry
 
@@ -69,6 +68,7 @@ set wrap                " wrap lines
 " smaller tabs for html and css
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=2 sw=2 expandtab
+autocmd Filetype text setlocal ts=2 sw=2 expandtab
 """""""""""""""""""""""""""""""""""""""""""""
 " UI Config
 """""""""""""""""""""""""""""""""""""""""""""
@@ -133,19 +133,15 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""
 " search forward via space
 map <space> /
+
 " disable highlight with ",enter"
 map <silent> <leader><cr> :noh<cr>
+
 " move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" close current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-" close all buffers
-map <leader>ba :bufdo bd<cr>
 
 " navigate between buffers
 map <leader>l :bnext<cr>
@@ -153,16 +149,7 @@ map <leader>h :bprevious<cr>
 
 " mappings for managing tabs
 map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext
-
-" open tab with current buffers path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" switch cwd to directory of open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " specify behavior when switching between buffers
 try
@@ -186,3 +173,9 @@ set laststatus=2        " enable a status bar
 """""""""""""""""""""""""""""""""""""""""""""
 " remap 0 to first non-blank char
 map 0 ^
+
+" fast saving by ,w
+noremap <leader>w :update<cr>  
+
+" quick run python scripts
+autocmd FileType python nnoremap <leader>z :w<cr>:!python3 %<cr>

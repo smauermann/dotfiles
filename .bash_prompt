@@ -6,8 +6,6 @@
 #    * the active virtualenv
 #    * the branch/status of the current git repository
 #    * the return value of the previous command
-#    * the fact you just came from Windows and are used to having newlines in
-#      your prompts.
 #
 # USAGE:
 #
@@ -110,7 +108,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${GREEN}\u${COLOR_NONE} ${YELLOW}\w${COLOR_NONE} ${BRANCH}
+${PYTHON_VIRTUALENV}${GREEN}\u${COLOR_NONE} ${YELLOW}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
