@@ -19,20 +19,20 @@ alias g="git"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 # manipulating .bash_profile, .vimrc, ...
-alias vbash="vim ~/.bash_profile"
-alias sbash="source ~/.bash_profile"
-alias vvim="vim ~/.vimrc"
+alias bashconfig="vim ~/.bash_profile"
+alias bashsource="source ~/.bash_profile"
+alias vimconfig="vim ~/.vimrc"
 
 # python env aliases
 function pyenv() {
     if [ $VIRTUAL_ENV ]; then
         deactivate
     fi
-    source /Users/Stephan/projects/python_envs/$1/bin/activate
+    source /Users/Stephan/Projects/python_envs/$1/bin/activate
 }
 
 # Autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # pip bash completion start
 _pip_completion()

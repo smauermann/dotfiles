@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " my plugins
 Plugin 'morhetz/gruvbox'
-Plugin 'dracula/vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Raimondi/delimitMate'
@@ -45,14 +44,14 @@ let g:mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 try
-    colorscheme dracula
+    colorscheme gruvbox
 catch
 endtry
 
 set background=dark     " switch between solarized dark/light
+set gfn=Source\ Code\ Pro:h14
 set encoding=utf8       " utf8 encoding
 set ffs=unix,dos,mac    " unix as standard file type
-" set gfn=Source\ Code\ Pro:h14
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Spaces & Tabs
@@ -105,7 +104,7 @@ set magic               " for regex
 """""""""""""""""""""""""""""""""""""""""""""
 set noerrorbells
 set novisualbell
-set t_vb=               " set to empty to avoid beeps, flashes
+set t_vb=
 set tm=500
 
 """""""""""""""""""""""""""""""""""""""""""""
