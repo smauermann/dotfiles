@@ -12,7 +12,8 @@ export ZSH="/Users/stephan/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME=robbyrussell
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,7 +68,6 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   z
   brew
   pip
@@ -112,19 +112,35 @@ HOMEBREW_FOLDER="/usr/local/share"
 source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-### Powerlevel9k settings
+### Custom Themes
+## Pure
+autoload -U promptinit; promptinit
+PURE_CMD_MAX_EXEC_TIME=10
+prompt pure
+
+## Powerlevel9k settings
 # use nerdfonts
-POWERLEVEL9K_MODE='nerdfont-complete'
+# POWERLEVEL9K_MODE='nerdfont-complete'
+# 
+# # customize prompts
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram time)   
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true                     # move input prompt to new line
+# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true                    # add newline after prompt output
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰$ "
+# 
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=4                       # how many folder levels to show
+# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"      # how to shorten folders
+# 
+# POWERLEVEL9K_BATTERY_VERBOSE=false                      # hide remaining battery time
 
-# customize prompts
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(battery ram time)   
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true                     # move input prompt to new line
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true                    # add newline after prompt output
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰$ "
-
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4                       # how many folder levels to show
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"      # how to shorten folders
-
-POWERLEVEL9K_BATTERY_VERBOSE=false                      # hide remaining battery time
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

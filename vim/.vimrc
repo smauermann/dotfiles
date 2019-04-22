@@ -11,14 +11,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " my plugins
+Plugin 'pangloss/vim-javascript'
 Plugin 'morhetz/gruvbox'
 Plugin 'dracula/vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'heavenshell/vim-pydocstring'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ervandew/supertab'
+Plugin 'cocopon/iceberg.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -45,11 +47,11 @@ let g:mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 try
-    colorscheme dracula
-catch
+    colorscheme iceberg
+catch 'Cannot find color scheme'
+    colorscheme default
 endtry
 
-set background=dark     " switch between solarized dark/light
 set encoding=utf8       " utf8 encoding
 set ffs=unix,dos,mac    " unix as standard file type
 " set gfn=Source\ Code\ Pro:h14
@@ -71,6 +73,8 @@ set wrap                " wrap lines
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=2 sw=2 expandtab
 autocmd Filetype text setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""
 " UI Config
