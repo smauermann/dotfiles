@@ -11,8 +11,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " my plugins
-Plugin 'pangloss/vim-javascript'
-Plugin 'morhetz/gruvbox'
 Plugin 'dracula/vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
@@ -144,30 +142,6 @@ map <space> /
 " disable highlight with ",enter"
 map <silent> <leader><cr> :noh<cr>
 
-" move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" navigate between buffers
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>tc :tabclose<cr>
-
-" specify behavior when switching between buffers
-try
-    set switchbuf=useopen,usetab,newtab
-    set stal=2
-catch
-endtry
-
-" return to last edit position when opening file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 """""""""""""""""""""""""""""""""""""""""""""
 " status line
 """""""""""""""""""""""""""""""""""""""""""""
@@ -180,9 +154,3 @@ set laststatus=2        " enable a status bar
 """""""""""""""""""""""""""""""""""""""""""""
 " remap 0 to first non-blank char
 map 0 ^
-
-" fast saving by ,w
-noremap <leader>w :update<cr>  
-
-" quick run python scripts
-autocmd FileType python nnoremap <leader>z :w<cr>:!python3 %<cr>
