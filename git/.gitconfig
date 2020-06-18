@@ -2,7 +2,8 @@
     excludesfile = /Users/stephan/.gitignore_global
 [user]
     name = neurotronix
-    email = code@mauermann.io
+    email = github@mauermann.io
+	signingkey = 4ACE7B717BCBF159
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f
