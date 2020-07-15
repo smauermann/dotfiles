@@ -3,7 +3,9 @@
 [user]
     name = neurotronix
     email = github@mauermann.io
-	signingkey = 4ACE7B717BCBF159
+    signingkey = 61214D1E28B53F498FCA0DD14ACE7B717BCBF159
+[commit]
+    gpgsign = true
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f
