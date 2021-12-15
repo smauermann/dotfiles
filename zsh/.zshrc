@@ -68,9 +68,17 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  z
+  aws
   brew
-  pip
+  docker
+  docker-compose
+  git
+  gitfast
+  gitignore
+  kubectl
+  pipenv
+  pyenv
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -79,7 +87,8 @@ source $ZSH/oh-my-zsh.sh
 # My Stuff #
 ############
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# allow multithreading
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
@@ -102,7 +111,6 @@ export LANG=en_US.UTF-8
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
 alias zshconfig="vim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
@@ -112,35 +120,40 @@ HOMEBREW_FOLDER="/usr/local/share"
 source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-### Custom Themes
-## Pure
+### CLI Tools
+# pipenv: use pyenv python
+# export PIPENV_PYTHON=$PYENV_ROOT/shims/python
+# golang
+export GOPATH=$HOME/projects/go
+export PATH=$PATH:$GOPATH/bin
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+### Themes
+# Pure Theme
 autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=10
+# indicate git stash status
+zstyle :prompt:pure:git:stash show yes
+
 prompt pure
 
-## Powerlevel9k settings
-# use nerdfonts
-# POWERLEVEL9K_MODE='nerdfont-complete'
-# 
-# # customize prompts
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram time)   
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true                     # move input prompt to new line
-# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true                    # add newline after prompt output
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰$ "
-# 
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=4                       # how many folder levels to show
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"      # how to shorten folders
-# 
-# POWERLEVEL9K_BATTERY_VERBOSE=false                      # hide remaining battery time
+# reload zsh completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -U compinit && compinit
+zmodload -i zsh/complist
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# Created by `userpath` on 2019-08-22 16:37:26
+export PATH="$PATH:/Users/stephan/.local/bin"
+export PATH="$PATH:/usr/local/sbin"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+if [ -e /Users/stephan/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/stephan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+eval "$(direnv hook zsh)"
+
