@@ -1,7 +1,7 @@
 [core]
     excludesfile = /Users/stephan/.gitignore_global
 [user]
-    name = neurotronix
+    name = smauermann
     email = github@mauermann.io
     signingkey = 61214D1E28B53F498FCA0DD14ACE7B717BCBF159
 [commit]
