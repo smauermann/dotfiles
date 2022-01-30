@@ -77,7 +77,6 @@ plugins=(
   gitignore
   kubectl
   pipenv
-  pyenv
   terraform
 )
 
@@ -121,8 +120,6 @@ source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### CLI Tools
-# pipenv: use pyenv python
-# export PIPENV_PYTHON=$PYENV_ROOT/shims/python
 # golang
 export GOPATH=$HOME/projects/go
 export PATH=$PATH:$GOPATH/bin
