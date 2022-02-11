@@ -72,6 +72,7 @@ plugins=(
   brew
   docker
   docker-compose
+  fzf
   git
   gitfast
   gitignore
@@ -153,4 +154,7 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 if [ -e /Users/stephan/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/stephan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_COMPLETION_TRIGGER='**'
 
