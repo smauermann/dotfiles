@@ -130,20 +130,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
-### Themes
-# Pure Theme
-autoload -U promptinit; promptinit
-PURE_CMD_MAX_EXEC_TIME=10
-# indicate git stash status
-zstyle :prompt:pure:git:stash show yes
-
-prompt pure
-
 # reload zsh completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
-
 
 # Created by `userpath` on 2019-08-22 16:37:26
 export PATH="$PATH:/Users/stephan/.local/bin"
@@ -157,4 +147,6 @@ eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='**'
+
+eval "$(starship init zsh)"
 
