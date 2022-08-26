@@ -141,7 +141,6 @@ export PATH="$PATH:/usr/local/sbin"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
-if [ -e /Users/stephan/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/stephan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 eval "$(direnv hook zsh)"
 
