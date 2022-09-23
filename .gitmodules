@@ -1,0 +1,3 @@
+[submodule "kitty/kitty-icon"]
+	path = kitty/kitty-icon
+	url = https://github.com/DinkDonk/kitty-icon.git
