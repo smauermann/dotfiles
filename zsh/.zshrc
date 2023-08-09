@@ -77,7 +77,6 @@ plugins=(
   gitfast
   gitignore
   kubectl
-  pipenv
   terraform
 )
 
@@ -121,31 +120,26 @@ source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### CLI Tools
-# golang
-export GOPATH=$HOME/projects/go
-export PATH=$PATH:$GOPATH/bin
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
 # reload zsh completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
 
-# Created by `userpath` on 2019-08-22 16:37:26
+# add PIPX path
 export PATH="$PATH:/Users/stephan/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 
+# terraform completions
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+# source direnv
 eval "$(direnv hook zsh)"
 
+# fzf setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='**'
 
+# starship prompt
 eval "$(starship init zsh)"
 
