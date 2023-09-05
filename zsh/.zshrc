@@ -6,7 +6,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stephan/.oh-my-zsh"
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,7 +77,6 @@ plugins=(
   gitfast
   gitignore
   kubectl
-  pipenv
   terraform
 )
 
@@ -116,36 +115,34 @@ alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 
 # Load ZSH syntax highlighting and autosuggestions
-HOMEBREW_FOLDER="/usr/local/share"
-source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
+HOMEBREW_PREFIX=$(brew --prefix)
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### CLI Tools
-# golang
-export GOPATH=$HOME/projects/go
-export PATH=$PATH:$GOPATH/bin
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
 # reload zsh completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-autoload -U compinit && compinit
-zmodload -i zsh/complist
+if type brew &>/dev/null; then
+  FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 
-# Created by `userpath` on 2019-08-22 16:37:26
-export PATH="$PATH:/Users/stephan/.local/bin"
+  autoload -Uz compinit
+  compinit
+fi
+
+# add PIPX path
+export PATH="$PATH:/Users/$USER/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 
+# terraform completions
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+# source direnv
 eval "$(direnv hook zsh)"
 
+# fzf setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='**'
 
+# starship prompt
 eval "$(starship init zsh)"
 

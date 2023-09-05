@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-which -s brews
+which -s brew
 if [[ $? != 0 ]] ; then
     echo "Brew not found, installing brew and all packages"
     read -p "Press enter to continue"
