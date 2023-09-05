@@ -6,7 +6,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stephan/.oh-my-zsh"
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -115,18 +115,21 @@ alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 
 # Load ZSH syntax highlighting and autosuggestions
-HOMEBREW_FOLDER="/usr/local/share"
-source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
+HOMEBREW_PREFIX=$(brew --prefix)
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### CLI Tools
 # reload zsh completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-autoload -U compinit && compinit
-zmodload -i zsh/complist
+if type brew &>/dev/null; then
+  FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 # add PIPX path
-export PATH="$PATH:/Users/stephan/.local/bin"
+export PATH="$PATH:/Users/$USER/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 
 # terraform completions
