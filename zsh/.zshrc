@@ -118,28 +118,15 @@ alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias kevent="kubectl get events --sort-by='.lastTimestamp' -w"
 
-
 # Load ZSH syntax highlighting and autosuggestions
 HOMEBREW_PREFIX=$(brew --prefix)
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### CLI Tools
-# reload zsh completions
-if type brew &>/dev/null; then
-  FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
 # add PIPX path
 export PATH="$PATH:/Users/$USER/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
-
-# terraform completions
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
 
 # source direnv
 eval "$(direnv hook zsh)"
@@ -153,3 +140,9 @@ bindkey "ç" fzf-cd-widget
 # starship prompt
 eval "$(starship init zsh)"
 
+
+# reload zsh completions
+source .zsh_completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -U compinit && compinit
+zmodload -i zsh/complist
