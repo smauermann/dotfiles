@@ -93,6 +93,8 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# prevent weird ssh sessions
+export TERM=xterm-256color
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
