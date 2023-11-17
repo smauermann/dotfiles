@@ -70,8 +70,8 @@ ENABLE_CORRECTION="true"
 plugins=(
   aws
   brew
-  docker
-  docker-compose
+  #docker
+  #docker-compose
   fzf
   git
   gitfast

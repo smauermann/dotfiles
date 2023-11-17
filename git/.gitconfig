@@ -1,8 +1,8 @@
 [core]
     excludesfile = /Users/stephan/.gitignore_global
 [user]
-    name = smauermann
-    email = github@mauermann.io
+    name = Stephan Mauermann
+    email = stephan.mauermann@deepl.com
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f

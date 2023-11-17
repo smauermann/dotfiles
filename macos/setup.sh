@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -x
 # remove dock display delay
 defaults write com.apple.dock autohide -bool true && \
 defaults write com.apple.dock autohide-time-modifier -float 0.4 && \
