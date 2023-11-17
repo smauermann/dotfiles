@@ -7,6 +7,6 @@ set number
 set hlsearch
 set ruler
 highlight Comment ctermfg=green
-set clipboard=unnamed   " use macOS clipboard
+set clipboard+=unnamed  " use macOS clipboard
 set number relativenumber
 set backspace=indent,eol,start  " more powerful backspacing
