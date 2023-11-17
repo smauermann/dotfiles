@@ -76,6 +76,7 @@ plugins=(
   git
   gitfast
   gitignore
+  helm
   kubectl
   terraform
 )
