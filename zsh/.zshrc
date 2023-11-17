@@ -116,6 +116,8 @@ export TERM=xterm-256color
 alias zshconfig="vim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
+alias kevent="kubectl get events --sort-by='.lastTimestamp' -w"
+
 
 # Load ZSH syntax highlighting and autosuggestions
 HOMEBREW_PREFIX=$(brew --prefix)
@@ -145,6 +147,8 @@ eval "$(direnv hook zsh)"
 # fzf setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='**'
+# fix alt-c for fzf
+bindkey "ç" fzf-cd-widget
 
 # starship prompt
 eval "$(starship init zsh)"
