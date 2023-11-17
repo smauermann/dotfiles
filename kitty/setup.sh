@@ -3,9 +3,6 @@ set -eu
 
 CONFIG_DIR=$HOME/.config/kitty
 
-# light or dark icon
-ICON=dark
-
 mkdir -p $CONFIG_DIR
 
 if [[ ! -f $CONFIG_DIR/kitty.conf ]]; then
@@ -15,12 +12,6 @@ fi
 cp -rf $PWD/kitty-themes $CONFIG_DIR/
 
 # change the kitty icon
-cat <<EOT
-### Kitty
-To change the icon:
-1. Find kitty.app in the Applications folder, select it and press ⌘ + i.
-2. Drag kitty-dark.icns or kitty-light.icns onto the application icon in the kitty info pane.
-3. Delete the icon cache and restart Dock (done by this script)
-EOT
+kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("OK")' ./kitty-icon/kitty-dark.icns
 
 rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
