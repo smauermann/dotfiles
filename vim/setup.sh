@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-ln -s $PWD/.vimrc $HOME/
-ln -s $PWD/.vimrc $HOME/.ideavimrc
+source ../utils.sh
 
+safe_link $PWD/.vimrc $HOME/.vimrc
+safe_link $PWD/.vimrc $HOME/.ideavimrc

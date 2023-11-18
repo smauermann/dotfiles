@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-ln -s $PWD/.gitconfig $HOME/
-ln -s $PWD/.gitignore_global $HOME/
+source ../utils.sh
+
+safe_link $PWD/.gitconfig $HOME/.gitconfig
+safe_link $PWD/.gitignore_global $HOME/.gitignore_global
 

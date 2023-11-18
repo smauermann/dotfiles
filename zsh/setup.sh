@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ../utils.sh
+
 CONFIG_DIR=$HOME/.config/
 
 mkdir -p $CONFIG_DIR
@@ -11,4 +13,9 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 # link starship config
-ln -s $PWD/starship.toml $HOME/.config/
+safe_link $PWD/starship.toml $HOME/.config/starship.toml
+
+# link zsh files
+safe_link $PWD/.zshrc $HOME/.zshrc
+safe_link $PWD/.zsh_completions $HOME/.zsh_completions
+
