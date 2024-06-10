@@ -68,6 +68,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  argocd
   aws
   brew
   #docker
@@ -143,6 +144,9 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export PATH="$PATH:/Users/$USER/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 
+# add GOPATH, get via `go env GOPATH`
+export PATH="$PATH:$HOME/go/bin"
+
 # source direnv
 eval "$(direnv hook zsh)"
 
@@ -157,7 +161,14 @@ eval "$(starship init zsh)"
 
 
 # reload zsh completions
-source .zsh_completions
+source ~/.zsh_completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
+
+# bun completions
+[ -s "/Users/asrw/.bun/_bun" ] && source "/Users/asrw/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
