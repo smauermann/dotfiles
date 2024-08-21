@@ -117,6 +117,21 @@ alias zshconfig="vim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias kevent="kubectl get events --sort-by='.lastTimestamp' -w"
+alias tg="terragrunt"
+
+# Bash wrapper script to execute "kubectl get <resource> $RESOURCE -o yaml | yq" with a single alias "ky"
+function ky() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: ky <resource_type> <resource_name>"
+        return 1
+    fi
+
+    resource_type="$1"
+    resource_name="$2"
+
+    kubectl get "$resource_type" "$resource_name" -o yaml | yq
+}
+alias ky=ky
 
 # Load ZSH syntax highlighting and autosuggestions
 HOMEBREW_PREFIX=$(brew --prefix)
