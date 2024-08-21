@@ -11,3 +11,4 @@ read -p "Press enter to continue"
 ./vim/setup.sh
 ./kitty/setup.sh
 ./macos/setup.sh
+./wezterm/setup.sh

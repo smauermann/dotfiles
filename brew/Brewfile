@@ -31,9 +31,12 @@ cask "ledger-live"
 cask "monitorcontrol"
 cask "raycast"
 cask "visual-studio-code"
+<<<<<<< HEAD
 mas "Dashlane", id: 517914548
 mas "Flow", id: 1423210932
 mas "Focus for YouTube", id: 1514703160
 mas "Step Two", id: 1448916662
 mas "Tailscale", id: 1475387142
 mas "Wipr", id: 1320666476
+cask "wezterm"
+
