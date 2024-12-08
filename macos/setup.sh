@@ -10,5 +10,5 @@ killall Dock
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # key repeat speed
-defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-defaults write -g KeyRepeat -int 0.5 # normal minimum is 2 (30 ms)
+defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
