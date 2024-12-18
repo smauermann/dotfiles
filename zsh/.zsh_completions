@@ -1,3 +1,5 @@
+# talos
+talosctl completion zsh > "${fpath[1]}/_talosctl"
 
 # terraform completions
 autoload -U +X bashcompinit && bashcompinit
