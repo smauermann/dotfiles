@@ -15,3 +15,5 @@
    default = simple
 [init]
 	defaultBranch = main
+[url "git@git-ssh.deepl.dev:"]
+	insteadOf = https://git.deepl.dev/
