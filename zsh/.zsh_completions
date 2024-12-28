@@ -1,3 +1,6 @@
+# justfile
+just --completions zsh > "${fpath[1]}/_justfile"
+
 # talos
 talosctl completion zsh > "${fpath[1]}/_talosctl"
 
