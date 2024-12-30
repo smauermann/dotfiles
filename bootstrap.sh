@@ -12,3 +12,4 @@ read -p "Press enter to continue"
 ./kitty/setup.sh
 ./macos/setup.sh
 ./wezterm/setup.sh
+./ghostty/setup.sh
