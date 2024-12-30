@@ -9,7 +9,5 @@ read -p "Press enter to continue"
 ./zsh/setup.sh
 ./git/setup.sh
 ./vim/setup.sh
-./kitty/setup.sh
 ./macos/setup.sh
-./wezterm/setup.sh
 ./ghostty/setup.sh
