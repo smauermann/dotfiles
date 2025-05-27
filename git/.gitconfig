@@ -1,8 +1,5 @@
 [core]
     excludesfile = /Users/stephan/.gitignore_global
-[user]
-    name = Stephan Mauermann
-    email = stephan.mauermann@deepl.com
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f
@@ -12,8 +9,10 @@
     smudge = git lfs smudge %f	
     required = true
 [push]
-   default = simple
+    default = simple
 [init]
-	defaultBranch = main
-[url "git@git-ssh.deepl.dev:"]
-	insteadOf = https://git.deepl.dev/
+	  defaultBranch = main
+[includeIf "gitdir:~/projects/github.com/"]
+    path = ~/projects/github.com/.gitconfig
+[includeIf "gitdir:~/projects/git.deepl.dev/"]
+    path = ~/projects/git.deepl.dev/.gitconfig
