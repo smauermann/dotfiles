@@ -3,3 +3,4 @@ font-family = "Hack Nerd Font Mono"
 cursor-style = block
 background-opacity = 0.92
 shell-integration-features = no-cursor
+keybind = global:cmd+grave_accent=toggle_quick_terminal
