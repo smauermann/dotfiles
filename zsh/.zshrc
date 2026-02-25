@@ -61,7 +61,7 @@ function ky() {
 #########
 
 # uv/uvx, claude, etc.
-export PATH="$PATH:~/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/go/bin"
 
