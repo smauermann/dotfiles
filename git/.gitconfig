@@ -1,17 +1,16 @@
 [core]
-    excludesfile = /Users/stephan/.gitignore_global
-[user]
-    name = smauermann
-    email = github@mauermann.io
-[filter "hawser"]
-    clean = git hawser clean %f
-    smudge = git hawser smudge %f
-    required = true
+    excludesfile = ~/.gitignore_global
 [filter "lfs"]
     clean = git lfs clean %f	
     smudge = git lfs smudge %f	
     required = true
 [push]
-   default = simple
+    default = simple
 [init]
-	defaultBranch = main
+	  defaultBranch = main
+[includeIf "gitdir:~/projects/github.com/"]
+    path = ~/projects/github.com/.gitconfig
+[includeIf "gitdir:~/projects/git.deepl.dev/"]
+    path = ~/projects/git.deepl.dev/.gitconfig
+[includeIf "gitdir:~/playground/"]
+    path = ~/projects/git.deepl.dev/.gitconfig

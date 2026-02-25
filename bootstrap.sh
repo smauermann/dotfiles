@@ -6,6 +6,7 @@ echo "Setting up new machine"
 read -p "Press enter to continue"
 
 ./brew/setup.sh
+./mise/setup.sh
 ./zsh/setup.sh
 ./git/setup.sh
 ./vim/setup.sh
