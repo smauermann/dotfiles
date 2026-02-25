@@ -1,9 +1,0 @@
-# justfile
-just --completions zsh > "${fpath[1]}/_justfile"
-
-# talos
-talosctl completion zsh > "${fpath[1]}/_talosctl"
-
-# terraform completions
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform

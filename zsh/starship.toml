@@ -1,31 +1,17 @@
 format = """
-$username\
-$hostname\
-$localip\
-$shlvl\
 $directory\
-$vcsh\
 $git_branch\
-$git_commit\
 $git_state\
-$git_metrics\
 $git_status\
 $aws\
 $kubernetes\
-$container\
-$golang\
 $python\
 $terraform\
-$memory_usage\
-$env_var\
-$sudo\
 $cmd_duration\
 $line_break\
 $jobs\
-$battery\
 $time\
 $status\
-$shell\
 $character"""
 
 
