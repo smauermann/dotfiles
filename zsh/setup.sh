@@ -8,11 +8,12 @@ mkdir -p $CONFIG_DIR
 safe_link $PWD/starship.toml $HOME/.config/starship.toml
 safe_link $PWD/.zshrc $HOME/.zshrc
 safe_link $PWD/.zimrc $HOME/.zimrc
-safe_link $PWD/.zsh $HOME/.zsh
 
-# Cache directories
+# Create ~/.zsh structure (not symlinked, so cache stays out of the repo)
+mkdir -p $HOME/.zsh/cache/completions
+safe_link $PWD/.zsh/aliases.zsh $HOME/.zsh/aliases.zsh
+
 COMP_DIR=$HOME/.zsh/cache/completions
-mkdir -p $COMP_DIR
 
 # Cache brew prefix
 brew --prefix > ~/.zsh/cache/brew-prefix
