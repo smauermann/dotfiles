@@ -18,8 +18,9 @@ COMP_DIR=$HOME/.zsh/cache/completions
 # Cache brew prefix
 brew --prefix > ~/.zsh/cache/brew-prefix
 
-# Generate completions not handled by zimfw modules
-# (kubectl and helm completions managed by joke/zim-kubectl and joke/zim-helm)
+# Generate completions (zimfw alias modules don't include these)
+kubectl completion zsh > $COMP_DIR/_kubectl
+helm completion zsh > $COMP_DIR/_helm
 talosctl completion zsh > $COMP_DIR/_talosctl
 
 # Rebuild zcompdump
