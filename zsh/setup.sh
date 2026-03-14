@@ -1,28 +1,34 @@
 #!/usr/bin/env bash
-
 source ../utils.sh
 
-CONFIG_DIR=$HOME/.config/
-
+CONFIG_DIR=$HOME/.config
 mkdir -p $CONFIG_DIR
 
-# install Oh My ZSH https://ohmyz.sh/
-if [ ! -d ~/.oh-my-zsh ]; then
-  echo "Installing Oh My ZSH"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Link configs
+safe_link $PWD/starship.toml $HOME/.config/starship.toml
+safe_link $PWD/.zshrc $HOME/.zshrc
+safe_link $PWD/.zimrc $HOME/.zimrc
+
+# Install zimfw
+ZIM_HOME=$HOME/.zim
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+    https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 fi
 
-# link starship config
-safe_link $PWD/starship.toml $HOME/.config/starship.toml
+# Create ~/.zsh structure (not symlinked, so cache stays out of the repo)
+mkdir -p $HOME/.zsh/cache/completions
+safe_link $PWD/.zsh/aliases.zsh $HOME/.zsh/aliases.zsh
 
-# link zsh files
-safe_link $PWD/.zshrc $HOME/.zshrc
+COMP_DIR=$HOME/.zsh/cache/completions
 
-# one-time completion generation (not covered by homebrew or oh-my-zsh plugins)
-mkdir -p ~/.oh-my-zsh/completions
-talosctl completion zsh > ~/.oh-my-zsh/completions/_talosctl
+# Cache brew prefix
+brew --prefix > ~/.zsh/cache/brew-prefix
 
-# clean up stale manual completions now provided by plugins/homebrew
-rm -f ~/.oh-my-zsh/completions/_helm
-rm -f ~/.oh-my-zsh/completions/_kubectl
-rm -f ~/.oh-my-zsh/completions/_mise
+# Generate completions (zimfw alias modules don't include these)
+kubectl completion zsh > $COMP_DIR/_kubectl
+helm completion zsh > $COMP_DIR/_helm
+talosctl completion zsh > $COMP_DIR/_talosctl
+
+# Rebuild zcompdump
+rm -f ~/.zcompdump*

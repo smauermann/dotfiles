@@ -1,0 +1,24 @@
+zmodule environment
+zmodule input
+zmodule utility
+
+# Completions
+zmodule zsh-users/zsh-completions --fpath src
+zmodule ~/.zsh/cache/completions --fpath .
+zmodule completion
+
+# Aliases
+zmodule git
+zmodule joke/zim-kubectl
+zmodule joke/zim-helm
+
+# Tools
+zmodule fzf            # key bindings, completion, auto-detects fd + previews
+zmodule direnv         # cached/compiled direnv hook, auto-regenerates on upgrade
+zmodule joke/zim-starship  # cached/compiled starship init + completions
+zmodule joke/zim-mise      # cached/compiled mise activate + completions
+
+# Shell enhancements (order matters)
+zmodule Aloxaf/fzf-tab
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-syntax-highlighting

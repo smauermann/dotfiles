@@ -1,83 +1,34 @@
-######################
-# Oh My ZSH Settings #
-######################
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=~/.oh-my-zsh
-
-ZSH_THEME=""
-ENABLE_CORRECTION="true"
-
-# Custom completions dir (generated once by setup.sh, e.g. talosctl)
-# Must be added before oh-my-zsh sources compinit
-fpath=(~/.oh-my-zsh/completions $fpath)
-
-plugins=(
-  argocd
-  aws
-  brew
-  fzf
-  git
-  gitfast
-  gitignore
-  helm
-  kubectl
-)
-
-source $ZSH/oh-my-zsh.sh
-
-############
-# Settings #
-############
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$HOME/go/bin:$PATH"
 
-###########
-# Aliases #
-###########
+# Homebrew prefix (cached by setup.sh)
+if [[ -f ~/.zsh/cache/brew-prefix ]]; then
+  HOMEBREW_PREFIX=$(<~/.zsh/cache/brew-prefix)
+else
+  HOMEBREW_PREFIX=$(brew --prefix)
+fi
+export HOMEBREW_PREFIX
 
-alias zshconfig="vim ~/.zshrc"
-alias zshsource="source ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-alias kevent="kubectl get events --sort-by='.lastTimestamp' -w"
-alias tg="terragrunt"
-alias tf="tofu"
-alias kn=kubens
-alias kx=kubectx
-alias c=claude
-alias cx="claude --dangerously-skip-permissions"
+# Zimfw config
+zstyle ':zim:git' aliases-prefix 'g'
+ZIM_HOME=~/.zim
+ZIM_CONFIG_FILE=~/.zimrc
 
-function ky() {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "Usage: ky <resource_type> <resource_name>"
-        return 1
-    fi
-    kubectl get "$1" "$2" -o yaml | yq
-}
+# Install missing modules and update init.zsh if missing or outdated
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+source ${ZIM_HOME}/init.zsh
 
-#########
-# Tools #
-#########
+# Personal aliases
+source ~/.zsh/aliases.zsh
 
-# uv/uvx, claude, etc.
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/go/bin"
-
-HOMEBREW_PREFIX=$(brew --prefix)
-source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-eval "$(direnv hook zsh)"
-
+# fzf overrides (zimfw fzf module handles base setup)
 export FZF_COMPLETION_TRIGGER='**'
 bindkey "ç" fzf-cd-widget
 
-eval "$(starship init zsh)"
-eval "$(mise activate zsh)"
-
-# Bash-style completions (tofu/terragrunt need this, resolved dynamically via mise shims)
+# Bash-style completions (tofu/terragrunt)
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$(command -v tofu)" tofu
 complete -o nospace -C "$(command -v terragrunt)" terragrunt
