@@ -3,6 +3,7 @@ zmodule input
 
 # Completions
 zmodule zsh-users/zsh-completions --fpath src
+zmodule ~/.zsh/cache/completions --fpath .
 zmodule completion
 
 # Aliases

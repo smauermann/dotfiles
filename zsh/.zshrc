@@ -10,9 +10,6 @@ else
 fi
 export HOMEBREW_PREFIX
 
-# Generated completions (talosctl)
-fpath=(~/.zsh/cache/completions $fpath)
-
 # Zimfw config
 zstyle ':zim:git' aliases-prefix 'g'
 ZIM_HOME=~/.zim
