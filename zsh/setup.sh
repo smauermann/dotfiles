@@ -9,6 +9,13 @@ safe_link $PWD/starship.toml $HOME/.config/starship.toml
 safe_link $PWD/.zshrc $HOME/.zshrc
 safe_link $PWD/.zimrc $HOME/.zimrc
 
+# Install zimfw
+ZIM_HOME=$HOME/.zim
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+    https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
 # Create ~/.zsh structure (not symlinked, so cache stays out of the repo)
 mkdir -p $HOME/.zsh/cache/completions
 safe_link $PWD/.zsh/aliases.zsh $HOME/.zsh/aliases.zsh

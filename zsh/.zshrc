@@ -15,12 +15,6 @@ zstyle ':zim:git' aliases-prefix 'g'
 ZIM_HOME=~/.zim
 ZIM_CONFIG_FILE=~/.zimrc
 
-# Bootstrap zimfw if missing
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-    https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-fi
-
 # Install missing modules and update init.zsh if missing or outdated
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
