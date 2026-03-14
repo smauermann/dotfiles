@@ -2,6 +2,8 @@ theme = tokyonight
 font-family = "Hack Nerd Font Mono"
 cursor-style = block
 background-opacity = 0.97
+background-blur = macos-glass-regular
 shell-integration-features = no-cursor
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
+unfocused-split-opacity = 0.5
