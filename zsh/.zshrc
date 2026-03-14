@@ -24,8 +24,10 @@ if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
     https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 fi
 
-# Install missing modules and initialize
-source ${ZIM_HOME}/zimfw.zsh && zimfw install
+# Install missing modules and update init.zsh if missing or outdated
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
 source ${ZIM_HOME}/init.zsh
 
 # Personal aliases
