@@ -9,6 +9,7 @@ zmodule completion
 
 # Aliases
 zmodule git
+zmodule homebrew
 zmodule joke/zim-kubectl
 zmodule joke/zim-helm
 

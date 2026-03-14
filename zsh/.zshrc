@@ -28,9 +28,4 @@ source ~/.zsh/aliases.zsh
 export FZF_COMPLETION_TRIGGER='**'
 bindkey "ç" fzf-cd-widget
 
-# Bash-style completions (tofu/terragrunt)
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C "$(command -v tofu)" tofu
-complete -o nospace -C "$(command -v terragrunt)" terragrunt
-
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
