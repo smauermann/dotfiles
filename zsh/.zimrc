@@ -8,7 +8,7 @@ zmodule ~/.zsh/cache/completions --fpath .
 zmodule completion
 
 # Aliases
-zmodule git
+zmodule ohmyzsh/ohmyzsh --root plugins/git
 zmodule homebrew
 zmodule joke/zim-kubectl
 zmodule joke/zim-helm
