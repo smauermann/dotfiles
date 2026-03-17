@@ -12,3 +12,4 @@ read -p "Press enter to continue"
 ./vim/setup.sh
 ./macos/setup.sh
 ./ghostty/setup.sh
+./aerospace/setup.sh
