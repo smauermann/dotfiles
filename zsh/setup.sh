@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")"
 source ../utils.sh
 
 CONFIG_DIR=$HOME/.config
